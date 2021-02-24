@@ -1,0 +1,14 @@
+.createTask button {
+    background-color: rgb(82, 71, 71); 
+    color: white; 
+    border: 4px solid rgb(82, 71, 71);
+    font-size: 20px;
+    padding: 10px 24px;
+    margin: 5px;
+    transition-duration: 0.5s;
+}
+    
+.createTask button:hover {
+    background-color: white;
+    color: black;
+}
