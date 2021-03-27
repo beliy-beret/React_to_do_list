@@ -3,16 +3,16 @@ import { Form, Field } from 'react-final-form'
 import ButtonComponent from './ButtonComponent';
 import s from './newTask.module.css'
 
-const NewTask = (props) => {            
+const NewTask = ({ setTask }) => {            
     
     const createTask = async (values) => {
-        await props.setTask(values.newTask);
+        await setTask(values.newTask);
         values.newTask = "";        
-    }; 
-    const onSubmit = createTask;     
+    };   
+
     return (
         <Form
-            onSubmit={onSubmit}        
+            onSubmit={createTask}        
             render={({ handleSubmit }) => (
                 <form onSubmit={ handleSubmit }>
                     <div className={s.task}>

@@ -7,40 +7,26 @@ import Task from './components/Task';
 function App() {
   
   const [taskList, setTaskList] = useState([]);
-  const [taskDone, setDone] = useState(false);
-    
-  const removeItem = (itemIndex) => {
-    taskList.splice(itemIndex, 1);
-    setTaskList([...taskList])}  
   
   const setTask = (newTask) => setTaskList([
     ...taskList,
-    {value: newTask, done: taskDone}
-  ]);  
-  
-  const changeDone = (i, value) => setDone(Object.assign( taskList[i], {done: value} ))
-
-  const tasks = taskList.map( (item, index) => (
-    <Task key={index} index={index} changeDone={changeDone}
-    task={item.value} removeItem={removeItem} />))
-
-  const delDone= () => {
-    let done = taskList.filter((task) => task.done === true);
-    done.forEach((item) => {
-      let index = taskList.indexOf(item);
-      taskList.splice(index, 1);
-      setTaskList([...taskList])
-    })
-  };
-    
+    {id: Math.floor(Math.random() * 1000), text: newTask, done: false}
+  ]);
+  const deleteDone = () => {
+    setTaskList(taskList.filter( item => !item.done))
+  }    
+  console.log(taskList)  
   return (
     <div className="App">
       <header className="App-header">
         <h1>ToDo list - "Become a web developer" !</h1>
       </header>
       <div className="taskList">
-        {tasks}
-        {tasks.length > 0 && <ButtonComponent onClick={delDone} name="Delete doneTask" />}
+        <ul>
+          { taskList.map( task => <Task key={task.id} text={task.text} task={task}
+          taskList={taskList} setTaskList={setTaskList} /> )} 
+        </ul>
+        {taskList.length > 0 && <ButtonComponent onClick={deleteDone} name="Delete done" />}        
       </div>      
       <div className="newTask">
         <NewTask setTask={setTask} />

@@ -1,14 +1,27 @@
 import React from 'react';
 import ButtonComponent from './ButtonComponent';
-import s from './task.module.css';
+import './task.css';
 
-const Task = (props) => {
-    const delTask = () => (props.removeItem(props.index));
-    const handleInput = (e) => props.changeDone(props.index, e.target.checked);
+const Task = ({ text, task, taskList, setTaskList }) => {
+    const deleteHandler = () => {
+        setTaskList(taskList.filter( el => el.id !== task.id))
+    };
+    const checkHandler = (e) => {
+        setTaskList(taskList.map( item => {
+            if (item.id === task.id) {
+                return { 
+                    ...item, done: e.target.checked
+                }
+            }
+            return item;
+        }))
+    };
+    
     return (
-        <li className={s.task}>
-            <span> {props.task} </span> <span className={s.chbox}> <input type="checkbox" onChange={handleInput} /> </span>           
-            <ButtonComponent onClick={delTask} name="delete" />            
+        <li className="task" >
+            <span className={`${task.done && "done"}`}> {text} </span>
+            <input type="checkbox" onChange={checkHandler} />           
+            <ButtonComponent onClick={deleteHandler} name="delete" />            
         </li>
     );
 };
