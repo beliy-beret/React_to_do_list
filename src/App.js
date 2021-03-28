@@ -15,18 +15,21 @@ function App() {
   const deleteDone = () => {
     setTaskList(taskList.filter( item => !item.done))
   }    
-  console.log(taskList)  
+    
   return (
     <div className="App">
       <header className="App-header">
         <h1>ToDo list - "Become a web developer" !</h1>
       </header>
       <div className="taskList">
+        <h2>Your tasks</h2>
         <ul>
           { taskList.map( task => <Task key={task.id} text={task.text} task={task}
           taskList={taskList} setTaskList={setTaskList} /> )} 
         </ul>
-        {taskList.length > 0 && <ButtonComponent onClick={deleteDone} name="Delete done" />}        
+        <div className="delete_done">
+          {taskList.length > 0 && <ButtonComponent onClick={deleteDone} name="Delete done" />}
+        </div>        
       </div>      
       <div className="newTask">
         <NewTask setTask={setTask} />

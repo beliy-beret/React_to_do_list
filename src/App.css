@@ -3,15 +3,18 @@
   grid-template-areas: 
   "H H"
   "TL NT";  
-  text-align: center;  
+  width: 80%;
+  min-height: 50%;
+  margin: 10% 10%;         
 }
 
 .App-header {
   grid-area: H;  
   background-color: #282c34;  
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   color: white;
+  border: black 4px solid;
+  border-radius: 25px 25px 0 0;  
 }
 
 .App-header h1 {
@@ -19,16 +22,26 @@
   padding: 20px;
 }
 
+.delete_done {
+  text-align: center;
+}
+
 .taskList {
   grid-area: TL;
   background-color: rgb(108, 120, 143);
   border: black 4px solid;
   border-radius: 0 0 0 25px;
+  justify-content: start;  
+}
+.taskList h2 {
+  text-align: center;
 }
 
 .newTask {
   grid-area: NT;
   background-color: cadetblue;
   border: black 4px solid;
-  border-radius: 0 0 25px 0px;
+  border-radius: 0 0 25px 0;
+  min-height: 50vh;
+  text-align: center;  
 }

@@ -19,8 +19,8 @@ const Task = ({ text, task, taskList, setTaskList }) => {
     
     return (
         <li className="task" >
-            <span className={`${task.done && "done"}`}> {text} </span>
-            <input type="checkbox" onChange={checkHandler} />           
+            <p className={`${task.done && "done"}`}> {text} </p>
+            <div className="check"><input type="checkbox" onChange={checkHandler} /></div>           
             <ButtonComponent onClick={deleteHandler} name="delete" />            
         </li>
     );
