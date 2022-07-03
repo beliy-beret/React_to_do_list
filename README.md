@@ -1,1 +1,3 @@
-React to do list
+# To do list.
+
+Приложение сделанное на библиотеке React.
